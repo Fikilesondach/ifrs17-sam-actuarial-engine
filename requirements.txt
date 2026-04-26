@@ -1,0 +1,10 @@
+pandas
+numpy
+openpyxl
+pyyaml
+streamlit
+plotly
+scipy
+great-expectations
+python-dateutil
+pyarrow

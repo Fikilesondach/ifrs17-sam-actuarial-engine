@@ -1,0 +1,107 @@
+# mappings/synthetic_data.yaml
+# ══════════════════════════════════════════════════════════════════════
+# Column mapping configuration for ABC Life LifePRO exports.
+#
+# The ingestion engine reads this file and uses it to:
+#   1. Skip metadata rows
+#   2. Map source column names to canonical names
+#   3. Convert coded values to standard values
+#   4. Know which fields need to be derived vs read directly
+#
+# To onboard a new source system, copy this file, rename it,
+# and update the mappings below. The engine code never changes.
+# ══════════════════════════════════════════════════════════════════════
+
+source_system: "ABC Life LifePRO"
+file_formats:
+  csv:
+    delimiter: "|"
+    skip_rows: 1          # Skip the system timestamp comment line
+    header_row: 0         # After skipping, row 0 is the header
+    encoding: "utf-8"
+  excel:
+    sheet_name: "Policies"
+    header_row: 0
+  json:
+    records_path: "policies"    # The key in the JSON envelope that holds records
+
+date_format: "%d/%m/%Y"         # Source date format — DD/MM/YYYY
+valuation_date: "2024-12-31"    # Overridden at runtime by the dashboard
+
+# ── Column name mappings ───────────────────────────────────────────────
+# Left side  = canonical field name (what the engine expects)
+# Right side = source column name   (what the file actually has)
+field_mappings:
+  policy_id:              "POL_NUM"
+  insurer_id:             "INSURER_CD"
+  date_of_birth:          "CLNT_DOB"
+  gender:                 "CLNT_GENDER"
+  smoker_status:          "SMOKER_IND"
+  product_code:           "PROD_CD"
+  inception_date:         "POL_COMM_DT"
+  expiry_date:            "POL_EXPIRY_DT"
+  policy_term_years_src:  "POL_TERM_YRS"
+  sum_assured:            "BASIC_SA"
+  premium_amount:         "PREM_AMT"
+  premium_frequency:      "PREM_FREQ_CD"
+  escalation_rate:        "PREM_ESCL_RT"
+  premium_payment_term:   "PREM_PYMT_TERM"
+  reinsurance_flag:       "REINSURED"
+  ri_retention:           "RI_RETENTION"
+  ri_ceded:               "RI_CEDED"
+  ri_treaty_id:           "RI_TREATY"
+  policy_status:          "POL_STAT_CD"
+  valuation_flag:         "VAL_FLAG"
+
+# ── Value mappings ─────────────────────────────────────────────────────
+# Convert coded source values to canonical standard values
+value_mappings:
+  gender:
+    "1": "M"
+    "2": "F"
+
+  smoker_status:
+    "Y": "S"
+    "N": "NS"
+
+  premium_frequency:
+    "M": "MONTHLY"
+    "Q": "QUARTERLY"
+    "A": "ANNUAL"
+
+  product_code:
+    "TL01": "TERM"
+    "TL02": "TERM"
+    "WL01": "WL"
+    "WL02": "WL"
+    "EN01": "ENDOW"
+    "EN02": "ENDOW"
+
+  reinsurance_flag:
+    "Y": true
+    "N": false
+
+  valuation_flag:
+    "Y": true
+    "N": false
+
+  policy_status:
+    "IF": "IF"
+    "PU": "PU"
+    "LA": "LA"
+
+# ── Derived fields ─────────────────────────────────────────────────────
+# These are computed by deriver.py — not read from source
+# "calculated" = engine computes it
+# "constant"   = fixed value applied to all records
+derived_fields:
+  currency:               {method: "constant",   value: "ZAR"}
+  measurement_model:      {method: "constant",   value: "GMM"}
+  age_at_entry:           {method: "calculated"}
+  age_at_valuation:       {method: "calculated"}
+  policy_duration_years:  {method: "calculated"}
+  remaining_term_years:   {method: "calculated"}
+  annualised_premium:     {method: "calculated"}
+  cohort_id:              {method: "calculated"}
+  portfolio_id:           {method: "calculated"}
+  lob:                    {method: "constant",   value: "LIFE"}

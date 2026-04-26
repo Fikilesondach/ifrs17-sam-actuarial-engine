@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "total_records": 1000,
+    "passed_validation": 993,
+    "failed_validation": 7,
+    "pass_rate": 0.993,
+    "records_with_warnings": 6,
+    "records_with_anomalies": 22
+  },
+  "error_breakdown": {
+    "MISSING_DATE_OF_BIRTH": 4,
+    "INVALID_AGE_AT_ENTRY": 4,
+    "INVALID_SUM_ASSURED": 3
+  },
+  "warning_breakdown": {
+    "ZERO_PREMIUM_INFORCE": 6
+  }
+}

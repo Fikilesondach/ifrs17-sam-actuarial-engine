@@ -1,0 +1,77 @@
+# mappings/generic_template.yaml
+# ══════════════════════════════════════════════════════════════════════
+# GENERIC TEMPLATE — Copy and rename for each new source system
+# Replace all values on the RIGHT side of the colons only.
+# The LEFT side (canonical names) must never change.
+# ══════════════════════════════════════════════════════════════════════
+
+source_system: "YOUR SYSTEM NAME HERE"
+file_formats:
+  csv:
+    delimiter: ","         # Change to | or \t if needed
+    skip_rows: 0           # Rows to skip before the header
+    header_row: 0
+    encoding: "utf-8"
+  excel:
+    sheet_name: "Sheet1"   # Name of the sheet containing data
+    header_row: 0
+  json:
+    records_path: "data"   # Key in JSON that holds the array of records
+
+date_format: "%Y-%m-%d"    # Change to match your source format
+valuation_date: "2024-12-31"
+
+field_mappings:
+  policy_id:              "REPLACE_WITH_YOUR_COLUMN_NAME"
+  insurer_id:             "REPLACE_WITH_YOUR_COLUMN_NAME"
+  date_of_birth:          "REPLACE_WITH_YOUR_COLUMN_NAME"
+  gender:                 "REPLACE_WITH_YOUR_COLUMN_NAME"
+  smoker_status:          "REPLACE_WITH_YOUR_COLUMN_NAME"
+  product_code:           "REPLACE_WITH_YOUR_COLUMN_NAME"
+  inception_date:         "REPLACE_WITH_YOUR_COLUMN_NAME"
+  expiry_date:            "REPLACE_WITH_YOUR_COLUMN_NAME"
+  sum_assured:            "REPLACE_WITH_YOUR_COLUMN_NAME"
+  premium_amount:         "REPLACE_WITH_YOUR_COLUMN_NAME"
+  premium_frequency:      "REPLACE_WITH_YOUR_COLUMN_NAME"
+  escalation_rate:        "REPLACE_WITH_YOUR_COLUMN_NAME"
+  reinsurance_flag:       "REPLACE_WITH_YOUR_COLUMN_NAME"
+  ri_retention:           "REPLACE_WITH_YOUR_COLUMN_NAME"
+  ri_ceded:               "REPLACE_WITH_YOUR_COLUMN_NAME"
+  ri_treaty_id:           "REPLACE_WITH_YOUR_COLUMN_NAME"
+  policy_status:          "REPLACE_WITH_YOUR_COLUMN_NAME"
+  valuation_flag:         "REPLACE_WITH_YOUR_COLUMN_NAME"
+
+value_mappings:
+  gender:
+    "MALE":   "M"
+    "FEMALE": "F"
+  smoker_status:
+    "SMOKER":     "S"
+    "NON_SMOKER": "NS"
+  premium_frequency:
+    "MONTHLY":   "MONTHLY"
+    "QUARTERLY": "QUARTERLY"
+    "ANNUAL":    "ANNUAL"
+  product_code:
+    "YOUR_TERM_CODE": "TERM"
+    "YOUR_WL_CODE":   "WL"
+    "YOUR_ENDOW_CODE":"ENDOW"
+  reinsurance_flag:
+    "YES": true
+    "NO":  false
+  policy_status:
+    "ACTIVE":   "IF"
+    "PAIDUP":   "PU"
+    "LAPSED":   "LA"
+
+derived_fields:
+  currency:               {method: "constant",   value: "ZAR"}
+  measurement_model:      {method: "constant",   value: "GMM"}
+  age_at_entry:           {method: "calculated"}
+  age_at_valuation:       {method: "calculated"}
+  policy_duration_years:  {method: "calculated"}
+  remaining_term_years:   {method: "calculated"}
+  annualised_premium:     {method: "calculated"}
+  cohort_id:              {method: "calculated"}
+  portfolio_id:           {method: "calculated"}
+  lob:                    {method: "constant",   value: "LIFE"}
