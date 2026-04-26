@@ -59,10 +59,9 @@ Most data science portfolio projects use publicly available datasets with well-u
 **The output is a regulated disclosure.** The Insurance Contract Liability calculated by this engine is the number that appears on a life insurer's IFRS balance sheet, is audited by an external auditor, and is reviewed by the Prudential Authority. That institutional context gives the project direct commercial relevance.
 
 ---
-
 ## Live Demo
 
-**[→ Open the Live Dashboard]([https://your-streamlit-url.streamlit.app](https://ifrs17-sam-actuarial-engine-z667ztlsfcbysw7ggyomny.streamlit.app))**
+**[→ Open the Live Dashboard](https://ifrs17-sam-actuarial-engine-z667ztlsfcbysw7ggyomny.streamlit.app)**
 
 On the live dashboard you can:
 - Click **Load Demo Portfolio** to instantly load 993 synthetic policies
