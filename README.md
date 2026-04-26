@@ -2,7 +2,7 @@
 
 > A live, end-to-end actuarial valuation engine for South African life insurance contracts. Implements the IFRS 17 General Measurement Model and the SAM (Solvency Assessment and Management) framework in Python — covering data ingestion, cash flow projection, Best Estimate Liability, Risk Adjustment, Contractual Service Margin, and assumption sensitivity analysis across a live Streamlit dashboard.
 
-[![Live App](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit)](https://your-streamlit-url.streamlit.app)
+[![Live App](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit)]([https://your-streamlit-url.streamlit.app](https://ifrs17-sam-actuarial-engine-z667ztlsfcbysw7ggyomny.streamlit.app))
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python)](https://python.org)
 [![IFRS 17](https://img.shields.io/badge/Standard-IFRS%2017-1a237e?style=for-the-badge)](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/)
 [![SAM](https://img.shields.io/badge/Framework-SAM%20%2F%20Solvency%20II-2e7d32?style=for-the-badge)](https://www.fsca.co.za)
@@ -62,7 +62,7 @@ Most data science portfolio projects use publicly available datasets with well-u
 
 ## Live Demo
 
-**[→ Open the Live Dashboard](https://your-streamlit-url.streamlit.app)**
+**[→ Open the Live Dashboard]([https://your-streamlit-url.streamlit.app](https://ifrs17-sam-actuarial-engine-z667ztlsfcbysw7ggyomny.streamlit.app))**
 
 On the live dashboard you can:
 - Click **Load Demo Portfolio** to instantly load 993 synthetic policies
