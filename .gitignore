@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+outputs/canonical/
+outputs/valuation_results/
+outputs/data_quality_reports/
+.ipynb_checkpoints/
